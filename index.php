@@ -37,7 +37,7 @@
           <div class="col-sm-6">
             <h1 class="m-0"><?php
             
-            // echo $title
+            echo $title
             
             ?></h1>
           </div><!-- /.col -->

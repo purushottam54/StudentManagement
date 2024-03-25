@@ -3,7 +3,7 @@
   <link rel="icon" href="./assets/images/favicon.png" type="image/png" />
 <style>
     body {
-      background-image: url('./assets/images/gpdbackground.jpg'); /* Replace 'background.jpg' with the path to your background image */
+      background-image: url('./assets/gpdbackground.jpg'); /* Replace 'background.jpg' with the path to your background image */
       background-size: cover; 
     }
     .overlay {
@@ -35,7 +35,7 @@ if(isset($_SESSION['login_user_id']))
 header("location:index.php?page=home");
 ?>
 <?php include 'header.php' ?>
-<body style="background-image: url('./assets/images/gpdbackground.jpg');" class="hold-transition login-page bg-black overlay">
+<body style="background-image: url('./assets/gpdbackground.jpg');" class="hold-transition login-page bg-black overlay">
 <div class="login-box">
   <div class="login-logo">
     <a href="#" class="text-black"><b><?php echo $_SESSION['system']['name'] ?></b></a>

@@ -7,8 +7,12 @@
           </div>
   </div>
   <hr>
+
+
+
+  <?php if($_SESSION['login_user_type_id'] == 2): ?>
       <div class="row">
-        <div class="col-12">
+        <div class="col-8">
         <div class="card card-outline card-success">
           <div class="card-header">
             <b>Self Study Material</b>
@@ -25,52 +29,41 @@
                 </colgroup>
                 <thead>
                   <th>#</th>
-                  <th>Letters</th>
-                  <th>Progress</th>
-                  <th>Status</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Action</th>
                   <th></th>
                 </thead>
                 <tbody>
                 <?php
                 $i = 1;
+                $material_type = ["PDF","PPT","Docs","Handwritten Notes","Image"];
                 $where = "";
                 if($_SESSION['login_user_type_id'] == 2){
-                  $where = " WHERE material_user_id = '{$_SESSION['login_user_id']}'";
+                  $where = " WHERE material_user_id = ( SELECT student_id FROM students WHERE stud_user_id =  '{$_SESSION['login_user_id']}')";
                 }
                 $qry = $conn->query("SELECT * FROM material $where order by material_id asc");
-                while($row = $qry->fetch_assoc()):
-                  $status = $row['letter_status'];
-                  $prog = ($status == 4) ? 100 : ($status * 20); // Assuming Done is 100%
-                ?>
+                while($row = $qry->fetch_assoc()):?>
                   <tr>
                       <td>
                          <?php echo $i++ ?>
                       </td>
                       <td>
                           <a>
-                              <?php echo ucwords($row['letter_title']) ?>
+                              <?php echo ucwords($row['material_category']) ?>
                           </a>
                           <br>
                           <small>
-                              Date: <?php echo date("Y-m-d",strtotime($row['letter_created_date'])) ?>
+                              Date: <?php echo date("Y-m-d",strtotime($row['material_date'])) ?>
                           </small>
                       </td>
                       <td class="project_progress">
-                          <div class="progress progress-sm">
-                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $prog ?>%">
-                              </div>
-                          </div>
-                          <small>
-                              <?php echo $prog ?>% Complete
-                          </small>
-                      </td>
-                      <td class="project-state">
-                          <?php
-                              echo "<div class='badge badge-success '>{$stat[$row['letter_status'] - 1]}</div>";
-                          ?>
+                          <a>
+                              <?php echo $material_type[$row['material_type']] ?>
+                          </a>
                       </td>
                       <td>
-                        <a class="btn btn-primary btn-sm" href="./index.php?page=view_letter&id=<?php echo $row['letter_id'] ?>">
+                        <a class="btn btn-primary btn-sm " href="./index.php?page=view_material&id=<?php echo $row['material_id'] ?>">
                               <i class="fas fa-folder">
                               </i>
                               View
@@ -89,9 +82,8 @@
           <div class="col-12 col-sm-6 col-md-12">
             <div class="small-box bg-light shadow-sm border">
               <div class="inner">
-                <h3><?php echo $conn->query("SELECT * FROM gpd_letters $where")->num_rows; ?></h3>
-
-                <p>Total Letters</p>
+                <h3><?php echo $conn->query("SELECT * FROM material $where")->num_rows; ?></h3>
+                <p>Total Material</p>
               </div>
               <div class="icon">
                 <i class="fa fa-layer-group"></i>
@@ -102,3 +94,5 @@
       </div>
         </div>
       </div>
+
+  <?php endif;?>

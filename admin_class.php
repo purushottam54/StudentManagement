@@ -308,42 +308,37 @@ Class Action {
 		$data = [];
 		$data2 = "";
 		$manage = "";
-		
 		foreach ($_POST as $k => $v) {
-			if ($k === 'name' || $k === 'principle_id') {
+			if ($k === 'name' || $k === 'material_id') {
 				continue;
 			}
-			
 			if (empty($data2)){
 				$data2 .= " $k='$v' ";
 			} else {
 				$data2 .= ", $k='$v' ";
 			}
-			
-			if (!is_numeric($k)) {
-				if ($k === 'letter_content') {
-					$v = htmlentities(str_replace("'", "&#x2019;", $v));
-				}
-			}
-			
-			// Populate $data array
 			$data[$k] = $v;
 		}
-		
 		$save = false;
-		if ($letter_id == '#') {
-			// Use $data array to generate columns and values
+		if(isset($_FILES['material_path']) && $_FILES['material_path']['tmp_name'] != ''){
+			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['material_path']['name'];
+			$move = move_uploaded_file($_FILES['material_path']['tmp_name'],'./assets/uploads/materials/'. $fname);
+			$data["material_path"] = $fname;
+		}
+		if ($material_id == '#') {
 			$columns = implode(", ", array_keys($data));
 			$values = "'" . implode("', '", array_values($data)) . "'";
-			$sql = "INSERT INTO gpd_letters ($columns) VALUES ($values)";
+			
+			$sql = "INSERT INTO material ($columns) VALUES ($values)";
+			// return $sql;
 			$save = $this->db->query($sql);
 		} else {
 			$sql = "UPDATE gpd_letters SET $data2 WHERE letter_id = $letter_id";
 			$save = $this->db->query($sql);
 		}
+
 		return $save ? 1 : 2;
 	}
-	
 	
 	function delete_project(){
 		extract($_POST);
