@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: #ededed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+video {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.navbar {
+    padding: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #1c3788;
+    font-weight: bold;
+    font-size: 1.2em;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px; /* Neon line height */
+    background: linear-gradient(90deg, #03a9f4, #f06, #9f6, #03a9f4); /* Neon colors */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.navbar a:hover {
+    color: #3498db;
+}
+
+.navbar a:hover::before {
+    opacity: 1;
+}
+
+.main {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    padding: 60px;
+    border-radius: 0% 100% 0% 100% / 100% 0% 100% 0%;
+    box-shadow: 15px 20px 20px rgba(0, 0, 0, 0.07),
+        15px 25px 10px rgba(0, 0, 0, 0.05),
+        inset 10px 10px 10px rgba(0, 0, 0, 0.08),
+        inset -10px -10px 15px rgba(255, 255, 255, 0.651);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+    margin-top: 80px; /* Adjusted margin to accommodate navbar */
+}
+
+.main span {
+    display: flex;
+    justify-content: center;
+    font-size: 2.7em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: rgb(250, 0, 157);
+    margin-bottom: 20px;
+}
+
+.main label {
+    position: relative;
+    left: 30px;
+    top: 20px;
+    width: 80%;
+    margin-top: 10px;
+    padding: 5px;
+    display: block;
+    border-radius: 40px;
+    padding-left: 15px;
+    box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.2),
+        15px 20px 20px rgba(255, 255, 255, 0.1);
+}
+
+.main label input {
+    width: 100%;
+    height: 30px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.main a {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    padding: 5px;
+    width: 140px;
+    height: 50px;
+    justify-content: center;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-top: 40px;
+    margin-left: 50px;
+    color: #3498db;
+    font-size: 0.8em;
+}
+
+.main a input {
+    display: none;
+}
+
+.main a .submit-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40px;
+    background: linear-gradient(45deg, #2e5a80, #3f87a6);
+    color: #fff;
+    font-size: 1em;
+    transition: background 0.3s;
+    cursor: pointer;
+}
+
+.main a:hover .submit-btn {
+    background: linear-gradient(45deg, #3f87a6, #2e5a80);
+}
+
+.admin .main button { background: #e74c3c; }
+.student .main button { background: #2ecc71; }
+.owner .main button { background: #f39c12; }
+.mess .main button { background: #9b59b6; }
