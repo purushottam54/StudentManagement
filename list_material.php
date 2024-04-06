@@ -1,4 +1,5 @@
 <div class="form-group">
+	Listing all Students Material <br>
     <label for="" class="control-label">Category</label>
     <select class="form-control form-control-sm select2" name="material_category" id="category_select" required>
         <option></option>
@@ -38,10 +39,10 @@
 				<thead>
 					<tr>
 						<th class="text-center">#</th>
-						<th>Letter Title</th>
-						<th>Date Started</th>
-						<th>Due Date</th>
-						<th>Status</th>
+						<th>Student Name</th>
+						<th>Material Type</th>
+						<th>Material Category</th>
+						<th>Material Date</th>
 						<th>Action</th>
 					</tr>
 				</thead>

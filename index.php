@@ -12,7 +12,7 @@
       $_SESSION['system'][$k] = $v;
     }
   }
-  ob_end_flush();
+  ob_end_flush(); 
 
 	include 'header.php'
 ?>
@@ -36,11 +36,9 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0"><?php
-            
-            echo $title
-            
+            echo $title;
             ?></h1>
-          </div><!-- /.col -->
+          </div>
 
         </div><!-- /.row -->
             <hr class="border-primary">
@@ -53,7 +51,7 @@
             if(!file_exists($page.".php")){
                 include '404.html';
             }else{
-            include $page.'.php';
+              include $page.'.php';
 
             }
           ?>

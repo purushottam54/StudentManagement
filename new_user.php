@@ -25,21 +25,6 @@
 								<option value="1" <?php echo isset($user_type_id) && $user_type_id == 1  ? 'selected readonly="true"' : '' ?>>Administrator</option>
 							</select>
 						</div>
-						<?php
-							
-						?>
-						<div id="hoddept" class="form-group"  <?php echo isset($user_type_id) && ($user_type_id == 2 ) ? '' : 'hidden' ?>>
-							<label for="department" class="control-label">Department</label>
-								<select name="department" class="custom-select custom-select-sm">
-									<option value="1" <?php echo isset($department_id) && $department_id == 1 ? 'selected' : '' ?> >Computer Engineering</option>
-									<option value="7" <?php echo isset($department_id) && $department_id == 7 ? 'selected' : '' ?> >Automobile Engineering</option>
-									<option value="3" <?php echo isset($department_id) && $department_id == 3 ? 'selected' : '' ?> >Civil Engineering</option>
-									<option value="2" <?php echo isset($department_id) && $department_id == 2 ? 'selected' : '' ?> >Dress Designing and Garment Manufacture</option>
-									<option value="6" <?php echo isset($department_id) && $department_id == 6 ? 'selected' : '' ?> >Electrical Engineering</option>
-									<option value="5" <?php echo isset($department_id) && $department_id == 5 ? 'selected' : '' ?> >Electronics and Tele-Communication Engineering</option>
-									<option value="4" <?php echo isset($department_id) && $department_id == 4 ? 'selected' : '' ?> >Mechanical Engineering</option>
-								</select>
-						</div>
 
 						<?php else: ?>
 							<input type="hidden" name="type" value="3">

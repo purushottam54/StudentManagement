@@ -51,8 +51,23 @@ if($action == 'delete_user'){
 	if($save)
 		echo $save;
 }
+if($action == 'delete_room'){
+	$save = $crud->delete_room();
+	if($save)
+		echo $save;
+}
 if($action == 'save_project'){
 	$save = $crud->save_project();
+	if($save)
+		echo $save;
+}
+if($action == 'save_room'){
+	$save = $crud->save_room();
+	if($save)
+		echo $save;
+}
+if($action == 'save_mess'){
+	$save = $crud->save_mess();
 	if($save)
 		echo $save;
 }

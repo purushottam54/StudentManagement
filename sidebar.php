@@ -24,6 +24,15 @@
               </p>
             </a>
           </li>
+
+          <?php if($_SESSION['login_user_type_id'] == 2 ): ?>
+            <li class="nav-item">
+                <a href="./index.php?page=curriculum" class="nav-link nav-   tree-item">
+                  <i class="nav-icon fas fa-print"></i>
+                  <p>Curriculum Activities</p>
+                </a>
+          </li>
+
           <li class="nav-item">
             <a href="#" class="nav-link nav-Letters nav-Letters ">
               <i class="nav-icon fas fa-layer-group"></i>
@@ -32,6 +41,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+
             <ul class="nav nav-treeview">
             <?php if($_SESSION['login_user_type_id'] == 3 | $_SESSION['login_user_type_id'] == 2 ): ?>
               <li class="nav-item">
@@ -48,38 +58,92 @@
                 </a>
               </li>
             </ul>
-          </li> 
-          <?php if($_SESSION['login_user_type_id'] == 3 ): ?>
+          </li>          
+          <?php endif;?>
+
+
+
+
+          <?php if($_SESSION['login_user_type_id'] == 3  || $_SESSION['login_user_type_id'] == 2 ): ?>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link nav-Letters nav-Letters nav-link nav-reports ">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>
+                Rooms 
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+            <?php if($_SESSION['login_user_type_id'] == 3): ?>
               <li class="nav-item">
-                <a href="./index.php?page=own_letters" class="nav-link nav-new_letter tree-item">
-                <i class="nav-icon fas fa-envelope"></i>
-                  <p>Own Letters</p>
+                <a href="./index.php?page=new_room" class="nav-link nav-new_letter tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Add Room</p>
                 </a>
               </li>
-              <?php endif; ?>
-              
-              
-              <?php if($_SESSION['login_user_type_id'] != 2 ): ?>
-                <li class="nav-item">
-                  <a href="./index.php?page=task_list" class="nav-link nav-task_list">
-                    <i class="fas fa-tasks nav-icon"></i>
-                    <p>Remark System</p>
-                  </a>
-                </li>
-                <?php endif; ?>
-         
-           <li class="nav-item">
-                <a href="./index.php?page=rooms" class="nav-link nav-reports">
-                  <i class="fas fa-th-list nav-icon"></i>
-                  <p>Rooms</p>
+              <li class="nav-item">
+                <a href="./index.php?page=list_room" class="nav-link nav-letter_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>List Room</p>
                 </a>
-          </li>
-           <li class="nav-item">
-                <a href="./index.php?page=mess" class="nav-link nav-   tree-item">
-                  <i class="nav-icon fas fa-print"></i>
-                  <p>Mess</p>
+              </li>
+            <?php endif; ?>
+            <?php if($_SESSION['login_user_type_id'] == 2 ): ?>
+              <li class="nav-item">
+                <a href="./index.php?page=apply_room" class="nav-link nav-new_letter tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Apply Room</p>
                 </a>
-          </li>
+              </li>
+            <?php endif; ?>
+              
+            </ul>
+          </li>  
+        <?php endif;?>
+
+          <?php if($_SESSION['login_user_type_id'] == 4  || $_SESSION['login_user_type_id'] == 2 ): ?>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link nav-Letters nav-Letters nav-link nav-reports ">
+              <i class="nav-icon fas fa-layer-group"></i>
+              <p>
+                Mess 
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+            <?php if($_SESSION['login_user_type_id'] == 4): ?>
+              <li class="nav-item">
+                <a href="./index.php?page=update_mess" class="nav-link nav-new_letter tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Update Mess</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="./index.php?page=list_customers" class="nav-link nav-letter_list tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>List Customers</p>
+                </a>
+              </li>
+            <?php endif; ?>
+            <?php if($_SESSION['login_user_type_id'] == 2 ): ?>
+              <li class="nav-item">
+                <a href="./index.php?page=apply_mess" class="nav-link nav-new_letter tree-item">
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Apply Mess</p>
+                </a>
+              </li>
+            <?php endif; ?>
+              
+            </ul>
+          </li>  
+        <?php endif;?>
+
+          
+          
           <?php if($_SESSION['login_user_type_id'] == 1): ?>
           <li class="nav-item">
             <a href="#" class="nav-link nav-edit_user">

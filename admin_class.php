@@ -22,12 +22,13 @@ Class Action {
 					$_SESSION['login_'.$key] = $value;
 			}
 				return 1;
-		}else{
+		}
+		
+		
+		else{
 			return 2;
 		}
 	}
-
-
 
 	public function print_letter() {
 
@@ -69,15 +70,10 @@ Class Action {
 		$user_id = "";
 		extract($_POST);
 		$data = "";
-		
 		foreach($_POST as $k => $v){
 			if(!in_array($k, array('id','cpass','password')) && !is_numeric($k)){
-				if($k == "department") {
-					$department = $v;
-					continue;
-				} else {
 					if($k == "user_email") {
-						$eemail = $v;   
+						$eemail = $v; 
 					}
 					if($k == "user_type_id") {
 						$user_type = $v;
@@ -87,7 +83,6 @@ Class Action {
 					} else {
 						$data .= ", $k='$v' ";
 					}
-				}
 			}
 		}
 		
@@ -95,38 +90,31 @@ Class Action {
 			$data .= ", user_password=md5('$password') ";
 		}
 		$user_id = $id;
-		$check = $this->db->query("SELECT * FROM gpd_users where user_email ='$eemail' ".(!empty($id) ? " and user_id != {$id} " : ''))->num_rows;
-		
+		$check = $this->db->query("SELECT * FROM users where user_email ='$eemail' ".(!empty($id) ? " and user_id != {$id} " : ''))->num_rows;
 		if($check > 0){
 			return 2;
 			exit;
 		}
-		
 		if(isset($_FILES['user_profile_pic']) && $_FILES['user_profile_pic']['tmp_name'] != ''){
 			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['user_profile_pic']['name'];
-			$move = move_uploaded_file($_FILES['user_profile_pic']['tmp_name'],'assets/uploads/'. $fname);
+			$move = move_uploaded_file($_FILES['user_profile_pic']['tmp_name'],'assets/images/'. $fname);
 			$data .= ", user_profile_pic = '$fname' ";
 		}
-		
 		if(empty($id)){
-			$save = $this->db->query("INSERT INTO gpd_users SET $data");
-			$qry =  $this->db->query("SELECT user_id FROM gpd_users WHERE user_email = '$eemail'");
-			
+			$save = $this->db->query("INSERT INTO users SET $data");
+			$qry =  $this->db->query("SELECT user_id FROM users WHERE user_email = '$eemail'");
 			if ($qry->num_rows > 0) {
 				$row = $qry->fetch_assoc();
 				$user_id = $row['user_id'];
-				
 				if ($user_type == "2" ) {
-					$save = $this->db->query("INSERT INTO gpd_teacher (teacher_id, user_id, department_id) VALUES (NULL, $user_id, $department)");
-				} elseif ($user_type == "3" ) {
-					$save = $this->db->query("INSERT INTO gpd_hod (hod_id, user_id, department_id) VALUES (NULL, $user_id, $department)");
+					$save = $this->db->query("INSERT INTO students (stud_user_id) VALUES ( $user_id)");
 				}
 			} else {
 				return null;
 			}
 		} else {
-			$save = $this->db->query("UPDATE gpd_users SET $data WHERE user_id = $id");
-			$qry = $this->db->query("SELECT * FROM gpd_teacher WHERE user_id = '$id'");
+			$save = $this->db->query("UPDATE users SET $data WHERE user_id = $id");
+			$qry = $this->db->query("SELECT * FROM students WHERE user_id = '$id'");
 			$qry2 = $this->db->query("SELECT * FROM gpd_hod WHERE user_id = '$id'");
 			if (!($qry->num_rows > 0)) {
 				if ($user_type == "2" ) {
@@ -209,7 +197,6 @@ Class Action {
 		$data = "";
 		foreach($_POST as $k => $v){
 			if(!in_array($k, array('user_id','user_password','table','user_password')) && !is_numeric($k)){
-				
 				if(empty($data)){
 					$data .= " $k='$v' ";
 				}else{
@@ -309,7 +296,7 @@ Class Action {
 		$data2 = "";
 		$manage = "";
 		foreach ($_POST as $k => $v) {
-			if ($k === 'name' || $k === 'material_id') {
+			if ($k === 'name') {
 				continue;
 			}
 			if (empty($data2)){
@@ -326,9 +313,9 @@ Class Action {
 			$data["material_path"] = $fname;
 		}
 		if ($material_id == '#') {
+			unset($data['material_id']);
 			$columns = implode(", ", array_keys($data));
 			$values = "'" . implode("', '", array_values($data)) . "'";
-			
 			$sql = "INSERT INTO material ($columns) VALUES ($values)";
 			// return $sql;
 			$save = $this->db->query($sql);
@@ -336,13 +323,97 @@ Class Action {
 			$sql = "UPDATE gpd_letters SET $data2 WHERE letter_id = $letter_id";
 			$save = $this->db->query($sql);
 		}
-
 		return $save ? 1 : 2;
+		// return $sql;
 	}
+
+	function save_room() {
+		extract($_POST);
+		$data = [];
+		$data2 = "";
+		$manage = "";
+		foreach ($_POST as $k => $v) {
+			if ($k === 'name') {
+				continue;
+			}
+			if (empty($data2)){
+				$data2 .= " $k='$v' ";
+			} else {
+				$data2 .= ", $k='$v' ";
+			}
+			$data[$k] = $v;
+		}
+		$save = false;
+		if(isset($_FILES['room_pictures']) && $_FILES['room_pictures']['tmp_name'] != ''){
+			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['room_pictures']['name'];
+			$move = move_uploaded_file($_FILES['room_pictures']['tmp_name'],'./assets/uploads/materials/'. $fname);
+			$data["room_pictures"] = $fname;
+		}
+		if ($room_id == '#') {
+			unset($data['room_id']);
+			$columns = implode(", ", array_keys($data));
+			$values = "'" . implode("', '", array_values($data)) . "'";
+			$sql = "INSERT INTO room ($columns) VALUES ($values)";
+			// return $sql;
+			$save = $this->db->query($sql);
+		} else {
+			$sql = "UPDATE room SET $data2 WHERE room_id = $letter_id";
+			$save = $this->db->query($sql);
+		}
+		return $save ? 1 : 2;
+		// return $sql;
+	}
+
+	function save_mess() {
+		extract($_POST);
+		$data = [];
+		$data2 = "";
+		$manage = "";
+		foreach ($_POST as $k => $v) {
+			if ($k === 'name' ) {
+				continue;
+			}
+			if (empty($data2)){
+				$data2 .= " $k='$v' ";
+			} else {
+				$data2 .= ", $k='$v' ";
+			}
+			$data[$k] = $v;
+		}
+		$save = false;
+		if(isset($_FILES['mess_pictures']) && $_FILES['mess_pictures']['tmp_name'] != ''){
+			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['mess_pictures']['name'];
+			$move = move_uploaded_file($_FILES['mess_pictures']['tmp_name'],'./assets/uploads/materials/'. $fname);
+			$data["mess_pictures"] = $fname;
+		}
+		if ($mess_id == '#') {
+			unset($data['mess_id']);
+			$columns = implode(", ", array_keys($data));
+			$values = "'" . implode("', '", array_values($data)) . "'";
+			$sql = "INSERT INTO mess ($columns) VALUES ($values)";
+			// return $sql;
+			$save = $this->db->query($sql);
+		} else {
+			$sql = "UPDATE mess SET $data2 WHERE mess_id = $mess_id";
+			$save = $this->db->query($sql);
+		}
+		return $save ? 1 : 2;
+		// return $sql;
+	}
+
+
+
 	
 	function delete_project(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM gpd_letters where letter_id = $id");
+		if($delete){
+			return 1;
+		}
+	}
+	function delete_room(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM room where room_id = $id");
 		if($delete){
 			return 1;
 		}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 08:08 PM
+-- Generation Time: Apr 01, 2024 at 12:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -46,7 +46,11 @@ INSERT INTO `material` (`material_id`, `material_user_id`, `material_type`, `mat
 (6, 5, 0, '1711357740_Sponser certificates _ MCED_page-0013.jpg', 'DSU', '2024-03-27'),
 (8, 5, 0, '1711358160_IMG-20240325-WA0007.jpg', 'Python', '2024-03-28'),
 (9, 13, 0, '1711360860_Sponser certificates _ MCED_page-0011.jpg', 'JAVA', '2024-03-19'),
-(11, 5, 0, '1711385220_Sponser certificates _ MCED_page-0010.jpg', 'JAVA', '2024-03-25');
+(11, 5, 0, '1711385220_Sponser certificates _ MCED_page-0010.jpg', 'JAVA', '2024-03-25'),
+(13, 4, 0, '1711357560_Sponser certificates _ MCED_page-0002.jpg', '', '0000-00-00'),
+(21, 4, 0, '1711881240_Screenshot (805).png', 'JAVA', '2024-03-31'),
+(23, 4, 0, '1711964400_Screenshot (695).png', 'Python', '2024-04-08'),
+(24, 4, 0, '1711964640_Screenshot (739).png', 'CGR', '2024-04-02');
 
 -- --------------------------------------------------------
 
@@ -57,9 +61,17 @@ INSERT INTO `material` (`material_id`, `material_user_id`, `material_type`, `mat
 CREATE TABLE `mess` (
   `mess_id` int(11) NOT NULL,
   `mess_user_id` int(11) NOT NULL,
+  `mess_price` int(11) NOT NULL,
   `mess_type` int(11) NOT NULL,
   `mess_pictures` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mess`
+--
+
+INSERT INTO `mess` (`mess_id`, `mess_user_id`, `mess_price`, `mess_type`, `mess_pictures`) VALUES
+(1, 4, 8888, 3, '1711888800_Screenshot (687).png');
 
 -- --------------------------------------------------------
 
@@ -70,10 +82,21 @@ CREATE TABLE `mess` (
 CREATE TABLE `room` (
   `room_id` int(11) NOT NULL,
   `room_user_id` int(11) NOT NULL,
-  `room_pictures` int(11) NOT NULL,
+  `room_pictures` text NOT NULL,
   `is_full` int(11) NOT NULL,
-  `room_price` int(11) NOT NULL
+  `room_price` int(11) NOT NULL,
+  `room_max` int(11) NOT NULL,
+  `room_current` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room`
+--
+
+INSERT INTO `room` (`room_id`, `room_user_id`, `room_pictures`, `is_full`, `room_price`, `room_max`, `room_current`) VALUES
+(2, 3, '1711881960', 0, 3000, 5, 1),
+(3, 3, '1711882080_Screenshot (844).png', 0, 2000, 3, 2),
+(5, 3, '1711966080_Screenshot (686).png', 0, 2000, 23, 20);
 
 -- --------------------------------------------------------
 
@@ -230,19 +253,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `material`
 --
 ALTER TABLE `material`
-  MODIFY `material_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `material_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `mess`
 --
 ALTER TABLE `mess`
-  MODIFY `mess_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `mess_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `students`

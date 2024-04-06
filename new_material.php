@@ -1,8 +1,10 @@
 <?php if(!isset($conn)){ include 'db_connect.php'; }
+$qry = $conn->query("SELECT student_id FROM students WHERE stud_user_id = ".$_SESSION['login_user_id']);
+$row3 = $qry->fetch_assoc();
 
 if (isset($material_id)) {
-	// $qry = $conn->query("SELECT * FROM users WHERE user_id = (SELECT m	FROM gpd_letters WHERE letter_id = $letter_id)");
-	// $row2 = $qry->fetch_assoc();
+	$qry = $conn->query("SELECT student_id FROM students WHERE stud_user_id = (SELECT user_id FROM  WHERE letter_id = $");
+	$row2 = $qry->fetch_assoc();
 }else{
 	$row2 = ["user_name" => $_SESSION['login_user_name'],"user_surname" => $_SESSION['login_user_surname']];
 }
@@ -11,7 +13,7 @@ if (isset($material_id)) {
 	<div class="card card-outline card-primary">
 		<div class="card-body">
 			<form action="" id="manage-project">
-        <input type="hidden" name="material_user_id" value="<?php echo isset($_SESSION['login_user_id']) ? $_SESSION['login_user_id']: '' ?>">
+        <input type="hidden" name="material_user_id" value="<?php echo isset($row3['student_id']) ? $row3['student_id']: '' ?>">
         <input type="hidden" name="material_id" value="<?php echo isset($material_id) ? $material_id: '#' ?>">
 		<div class="row">
 			<div class="col-md-6">
@@ -20,8 +22,6 @@ if (isset($material_id)) {
 					<input type="text" class="form-control form-control-sm" name="name" value="<?php echo isset( $row2["user_name"]) ? $row2["user_name"]." ".$row2["user_surname"] : '' ?>" readonly>
 				</div>
 			</div>
-			
-
 			<div class="col-md-6">
             <div class="form-group">
               <label for="" class="control-label">Date</label>
@@ -135,11 +135,11 @@ if (isset($material_id)) {
 				if(resp == 1){
 					alert_toast('Data successfully saved',"success");
 					setTimeout(function(){
-						location.href = 'index.php?page=list_material'
+						location.href = 'index.php?page=home'
 					},2000)
 				}
 				if(resp == 2){
-					alert_toast('Error',"error");
+					alert_toast('Yogi tai',"error");
 					setTimeout(function(){
 						location.href = 'index.php?page=save_project'
 					},2000)
