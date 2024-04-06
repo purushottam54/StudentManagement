@@ -56,12 +56,12 @@
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu" style="">
-		                      <a class="dropdown-item view_project" href="./index.php?page=view_letter&id=<?php echo $row['letter_id'] ?>" data-id="<?php echo $row['letter_id'] ?>">View</a>
+		                      <a class="dropdown-item view_project" href="./index.php?page=view_material&id=<?php echo $row['material_id'] ?>" data-id="<?php echo $row['material_id'] ?>">View</a>
 		                      <?php if($_SESSION['login_user_type_id'] != 4 | $_SESSION['login_user_type_id'] != 5 ): ?>
 								<div class="dropdown-divider"></div>
-		                      <a class="dropdown-item" href="./index.php?page=edit_letter&id=<?php echo $row['letter_id'] ?>">Edit</a>
+		                      <a class="dropdown-item" href="./index.php?page=edit_letter&id=<?php echo $row['material_id'] ?>">Edit</a>
 		                      <div class="dropdown-divider"></div>
-		                      <a class="dropdown-item delete_project" href="javascript:void(0)" data-id="<?php echo $row['letter_id'] ?>">Delete</a>
+		                      <a class="dropdown-item delete_project" href="javascript:void(0)" data-id="<?php echo $row['material_id'] ?>">Delete</a>
 		                  <?php endif; ?>
 		                    </div>
 						</td>
