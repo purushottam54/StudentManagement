@@ -1,16 +1,20 @@
 xgallery_images = [
     {
+<<<<<<< HEAD
       url: "./",
+=======
+      url: "./curriculum/20240301185404_IMG_0378.jpg",
+>>>>>>> ab64391c6a14161df42f2075019def045e54f2d5
       prompt: "abstract 3d render, rococo, octane render, detailed, black and gold",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/62.png",
+      url: "./curriculum/20240301185412_IMG_0379.jpg",
       prompt: "abstract 3d render, rococo, octane render, detailed, black and gold",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/60.png",
+      url: "./curriculum/",
       prompt: "abstract 3d crystals render, octane render",
       date: "17.11.2022",
       tags: "abstract"
@@ -84,226 +88,6 @@ xgallery_images = [
       prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
       date: "15.11.2022",
       tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/40.png",
-      prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/39.png",
-      prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/38.png",
-      prompt: "cute chibi dragon person with clothing on a skateboard, pixar style + , highly detailed, 4k",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/50.png",
-      prompt: "abstract 3d render, rococo, octane render, detailed",
-      date: "17.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/37.png",
-      prompt: "cute chibi racoon person with clothing sitting on a bench, pixar style + , highly detailed, 4k",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/36.png",
-      prompt: "cute chibi penguin person with clothing in the park eating ice cream, pixar style + , highly detailed, 4k",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/52.png",
-      prompt: "abstract 3d render, rococo, octane render, detailed",
-      date: "17.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/35.png",
-      prompt: "cute smiling chibi cow in a cup, pixar style, detailed",
-      date: "15.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/34.png",
-      prompt: "modern luxury apartment with a skyline view of tokyo, plants + , decoration + , cozy + , night, hd, photography, scenery, neon lights, cinematic shot, post edited",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/33.png",
-      prompt: "modern luxury apartment with a skyline view of tokyo, plants + , decoration + , cozy + , night, hd, photography, scenery, neon lights, cinematic shot, post edited",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/32.png",
-      prompt: "modern luxury apartment with a skyline view of tokyo, plants + , decoration + , cozy + , night, hd, photography, scenery, neon lights, cinematic shot, post edited",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/31.png",
-      prompt: "3d isometric greek city, octane render, isometric + , voxel style + , highly detailed, hd, 8k",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/30.png",
-      prompt: "3d isometric chinatown in spring, octane render + , isometric + , voxel style + , highly detailed + , hd, 8k",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/29.png",
-      prompt: "3d isometric chinatown in spring, octane render + , isometric + , voxel style + , highly detailed + , hd, 8k",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/49.png",
-      prompt: "abstract 3d render, rococo, octane render, detailed",
-      date: "17.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/28.png",
-      prompt: "isometric holographic 3d blueprint of a futuristic city, blue",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/27.png",
-      prompt: "isometric holographic 3d blueprint of a futuristic city, blue",
-      date: "14.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/26.png",
-      prompt: "fluffy cute fox person in the distance with cotton clothing in snowy mountains, pixar style, beautiful scenery, wide angle shot + , highly detailed",
-      date: "13.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/25.png",
-      prompt: "fluffy cute fox person in the distance with cotton clothing in snowy mountains, pixar style, beautiful scenery, wide angle shot + , highly detailed",
-      date: "13.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/24.png",
-      prompt: "nebula, galaxy, space, fractal, highly detailed, high contrast colors, abstract, rococo, hyperrealistic, 8k, multidimensional glowing paper cut craft",
-      date: "12.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/23.png",
-      prompt: "nebula, galaxy, space, fractal, highly detailed, high contrast colors, abstract, rococo, hyperrealistic, 8k, multidimensional glowing paper cut craft",
-      date: "12.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/22.png",
-      prompt: "nebula, galaxy, space, color splash + , paper cut art + , fractal, highly detailed, high contrast colors, abstract, rococo, hyperrealistic, 8k",
-      date: "13.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/21.png",
-      prompt: "nebula, galaxy, space, color splash + , paper cut art + , fractal, highly detailed, high contrast colors, abstract, rococo, hyperrealistic, 8k",
-      date: "13.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/20.png",
-      prompt: "greek temple and pillars background, greek sculpture of a masculine chiseled male in the middle + , marble sculpture + , beautiful male sculpture + , perfect lighting, photorealistic, wide angle shot, clouds, sky",
-      date: "12.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/19.png",
-      prompt: "marble sculpture of zeus holding a thunderbolt, greek god, highly detailedy, perfect lighting",
-      date: "12.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/18.png",
-      prompt: "marble sculpture of poseidon holding a trident, greek god, highly detailedy, perfect lighting",
-      date: "12.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/17.png",
-      prompt: "9 tailed fox, angry eyes, smoke from nose, art illustration, art by chun lo + , highly detailed, wide angle, distant camera, scene shot",
-      date: "12.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/16.png",
-      prompt: "9 tailed fox, angry eyes, smoke from nose, art illustration, art by chun lo + , highly detailed, wide angle, distant camera, scene shot",
-      date: "12.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/15.png",
-      prompt: "futuristic cyberpunk city from top view, octane render, 3d, highly detailed, photorealism",
-      date: "12.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/14.png",
-      prompt: "pixel art cyberpunk city, night, rain",
-      date: "12.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/13.png",
-      prompt: "dragon with around a japanese shrine + multi dimensional glowing paper cut craft + paper illustration + ornate + detailed + perfect lighting + , jungle of bamboo in the background",
-      date: "11.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/12.png",
-      prompt: "dragon with around a japanese shrine + multi dimensional glowing paper cut craft + paper illustration + ornate + detailed + perfect lighting + , jungle of bamboo in the background",
-      date: "11.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/51.png",
-      prompt: "abstract 3d render, rococo, octane render, detailed",
-      date: "17.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/11.png",
-      prompt: "dragon with around a japanese shrine + multi dimensional glowing paper cut craft + paper illustration + ornate + detailed + perfect lighting + , jungle of bamboo in the background",
-      date: "11.11.2022",
-      tags: "scenery"
-    },{
-      url: "https://assets.codepen.io/1692350/10.png",
-      prompt: "dragon with around a japanese shrine + multi dimensional glowing paper cut craft + paper illustration + ornate + detailed + perfect lighting + , jungle of bamboo in the background",
-      date: "11.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/9.png",
-      prompt: "dragon with around a japanese shrine + multi dimensional glowing paper cut craft + paper illustration + ornate + detailed + perfect lighting + , jungle of bamboo in the background",
-      date: "11.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/8.png",
-      prompt: "mel medarda from acrana, beautiful dark skin woman, golden headpiece and earrings, beautiful white dress with golden accesoirs, greek marble pillars in background",
-      date: "10.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/7.png",
-      prompt: "unreal engine, cyberpunk samurai girl, beautiful face, perfect lighting, oni mask, 8k, detailed, bloom, hdr, ambient occolusion, green and yellow colors",
-      date: "10.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/6.png",
-      prompt: "unreal engine, cyberpunk samurai girl, beautiful face, perfect lighting, oni mask, 8k, detailed, bloom, hdr, ambient occolusion, green and yellow colors",
-      date: "10.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/5.png",
-      prompt: "galaxy with nebulas inside a fish glass bowl filled with water, water bubbles, reflective water bubbles, galaxy, nebula, beautiful, yellow, orange, red, 3d, bloom, occlusion, beautiful lighting, 8k, highly detailed, hyperreal, octane render, hdr, long exposure, realistic",
-      date: "09.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/4.png",
-      prompt: "galaxy with nebulas inside a fish glass bowl filled with water, water bubbles, reflective water bubbles, galaxy, nebula, beautiful, yellow, orange, red, 3d, bloom, occlusion, beautiful lighting, 8k, highly detailed, hyperreal, octane render, hdr, long exposure, realistic",
-      date: "09.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/2.png",
-      prompt: "ancient goddess, detailed skin pores, glowing tribal tattoos, golden clothing accesoires, fur clothing, magic staff, standing in a magic forest, blue and green theme, global illumination, photorealistic, bloom, hdr, 8k",
-      date: "08.11.2022",
-      tags: "characters"
-    },{
-      url: "https://assets.codepen.io/1692350/3.png",
-      prompt: "futuristic jungle city in an aquarium on a vintage table, detailed water, water bubbles, fish, octane, 3d render, cinema4d, hdr, global illumination, ambient occolusion, highly detailed, 8k",
-      date: "08.11.2022",
-      tags: "abstract"
-    },{
-      url: "https://assets.codepen.io/1692350/1.png",
-      prompt: "futuristic jungle city in an aquarium on a vintage table, detailed water, water bubbles, fish, octane, 3d render, cinema4d, hdr, global illumination, ambient occolusion, highly detailed, 8k",
-      date: "08.11.2022",
-      tags: "abstract"
     }
   ];
   
