@@ -1,6 +1,6 @@
 xgallery_images = [
     {
-      url: "https://assets.codepen.io/1692350/61.png",
+      url: "./",
       prompt: "abstract 3d render, rococo, octane render, detailed, black and gold",
       date: "17.11.2022",
       tags: "abstract"
