@@ -1,16 +1,3 @@
-<div class="form-group">
-    Listing all Rooms that has been added by Room Owners<br>
-    <label for="" class="control-label">Category</label>
-    <select class="form-control form-control-sm select2" name="material_category" id="category_select" required>
-        <option></option>
-        <?php
-        $unique_categories = $conn->query("SELECT DISTINCT material_category FROM material ORDER BY material_category ASC");
-        while ($row = $unique_categories->fetch_assoc()):
-            ?>
-            <option><?php echo ucwords($row['material_category']) ?></option>
-        <?php endwhile; ?>
-    </select>
-</div>
 <?php include'db_connect.php' ?>
 <div class="col-lg-12">
 	<div class="card card-outline card-success">
@@ -51,37 +38,27 @@
 				<tbody>
 				<?php
                 $i = 1;
-                $stat = array("Teacher","Hod","Lipik","Principal", "Done");
-                $where = "";
-                if($_SESSION['login_user_type_id'] == 2){
-                  $where = " WHERE letter_creator_user_id = '{$_SESSION['login_user_id']}'";
-                }
-                elseif($_SESSION['login_user_type_id'] == 3){
-                  $where = " WHERE letter_creator_user_id = '{$_SESSION['login_user_id']}' OR letter_creator_user_id IN ( SELECT user_id FROM gpd_teacher WHERE department_id = ( SELECT department_id FROM gpd_hod WHERE user_id = '{$_SESSION['login_user_id']}' ))";
-                }
-                elseif($_SESSION['login_user_type_id'] == 4){
-                  $where = " WHERE letter_status = '3'";
-                }
-                elseif($_SESSION['login_user_type_id'] == 5){
-                  $where = " WHERE letter_status = '4'";
-                }
-                $qry = $conn->query("SELECT * FROM gpd_letters $where order by letter_creator_user_id asc");
-                while($row = $qry->fetch_assoc()):
-                  $status = $row['letter_status'];
-                  $prog = ($status == 4) ? 100 : ($status * 20); // Assuming Done is 100%
-                
+				$isFull = ["Full","Not-Full"];
+                $qry = $conn->query("SELECT * FROM room order by room_id asc");
+                while($row = $qry->fetch_assoc()):                
                 ?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
 						<td>
-							<p><b><?php echo ucwords($row['letter_title']) ?></b></p>
+
+						<?php
+							$qry1 = $conn->query("SELECT concat(user_name,' ',user_surname) as name FROM users WHERE user_id = ".$row['room_user_id']);
+							$row4 = $qry1->fetch_assoc()
+						?>
+							<p><b><?php echo ucwords($row4['name']) ?></b></p>
 							<p class="truncate"></p>
 						</td>
-						<td><b><?php echo date("M d, Y",strtotime($row['letter_created_date'])) ?></b></td>
-						<td><b><?php echo date("M d, Y",strtotime($row['letter_created_date'])) ?></b></td>
+						<td><b><?php echo $isFull[$row['is_full']] ?></b></td>
+						<td><b><?php echo $row['room_price'] ?></b></td>
+						<td><b><?php echo $row['room_current'] ?></b></td>
 						<td class="text-center">
 							<?php
-							  	echo "<span class='badge badge-success'>{$stat[$row['letter_status'] - 1]}</span>";
+							  	echo $row['room_max'];
 							?>
 						</td>
 						<td class="text-center">
@@ -89,13 +66,7 @@
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu" style="">
-		                      <a class="dropdown-item view_project" href="./index.php?page=view_letter&id=<?php echo $row['letter_id'] ?>" data-id="<?php echo $row['letter_id'] ?>">View</a>
-		                      <?php if($_SESSION['login_user_type_id'] != 4 | $_SESSION['login_user_type_id'] != 5 ): ?>
-								<div class="dropdown-divider"></div>
-		                      <a class="dropdown-item" href="./index.php?page=edit_letter&id=<?php echo $row['letter_id'] ?>">Edit</a>
-		                      <div class="dropdown-divider"></div>
-		                      <a class="dropdown-item delete_project" href="javascript:void(0)" data-id="<?php echo $row['letter_id'] ?>">Delete</a>
-		                  <?php endif; ?>
+		                      <a class="dropdown-item view_project" href="./index.php?page=view_letter&id=<?php echo $row['room_id'] ?>" data-id="<?php echo $row['room_id'] ?>">View</a>
 		                    </div>
 						</td>
 					</tr>	
