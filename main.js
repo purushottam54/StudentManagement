@@ -1,10 +1,6 @@
 xgallery_images = [
     {
-<<<<<<< HEAD
-      url: "./",
-=======
       url: "./curriculum/20240301185404_IMG_0378.jpg",
->>>>>>> ab64391c6a14161df42f2075019def045e54f2d5
       prompt: "abstract 3d render, rococo, octane render, detailed, black and gold",
       date: "17.11.2022",
       tags: "abstract"
@@ -14,77 +10,77 @@ xgallery_images = [
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "./curriculum/",
+      url: "./curriculum/20240301185419_IMG_0381.jpg",
       prompt: "abstract 3d crystals render, octane render",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/59.png",
+      url: "./curriculum/20240301190025_IMG_0394.jpg",
       prompt: "abstract 3d crystals render, octane render",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/58.png",
+      url: "./curriculum/20240301190202_IMG_0397.jpg",
       prompt: "abstract 3d city, octane render, rococo + , abstract + , detailed, black with gold details",
       date: "17.11.2022",
       tags: "scenery"
     },{
-      url: "https://assets.codepen.io/1692350/57.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "abstract 3d human face, octane render, rococo + , detailed, black with gold details",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/56.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "abstract 3d human face, octane render, rococo + , detailed, black with gold details",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/55.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "abstract 3d statue, octane render, detailed, black with gold details",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/54.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "abstract 3d statue, octane render, detailed, black with gold details",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/53.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "abstract 3d statue, octane render, detailed, black with gold details",
       date: "17.11.2022",
       tags: "abstract"
     },{
-      url: "https://assets.codepen.io/1692350/47.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, neo noir, cyberpunk girl character portrait, standing in city center, detailed, monochrome with red details",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/46.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, neo noir, cyberpunk girl character portrait, standing in city center, detailed, monochrome with red details",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/45.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, neo noir, cyberpunk girl character portrait, standing in city center, detailed, monochrome with red details",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/44.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/43.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/42.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
       date: "15.11.2022",
       tags: "characters"
     },{
-      url: "https://assets.codepen.io/1692350/41.png",
+      url: "./curriculum/20240301190019_IMG_0393.jpg",
       prompt: "splash art, cyberpunk character portrait, standing in city center, detailed, black outlines drawing style",
       date: "15.11.2022",
       tags: "characters"
