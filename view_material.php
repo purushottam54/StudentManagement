@@ -32,8 +32,6 @@ else
   </div>
   <div class="row mt-10">
     <div class="col-12 d-flex justify-content-center">
-      <button class="btn btn-danger mr-2" onclick="deletePDF()">Delete</button>
-      <button class="btn btn-primary mr-2" onclick="editPDF()">Edit</button>
       <a target="_blank" href="./assets/uploads/materials/<?php echo $row['material_path']; ?>" class="btn btn-success">Download</a>
     </div>
   </div>
