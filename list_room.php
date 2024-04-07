@@ -25,8 +25,8 @@
     		$array = [1, 4, 5];
     		if (!in_array($_SESSION['login_user_type_id'], $array)): ?>
     			<div class="card-tools">
-        			<a class="btn btn-block btn-sm btn-default btn-flat border-primary" href="./index.php?page=new_letter">
-		           		<i class="fa fa-plus"></i> Add New letter
+        			<a class="btn btn-block btn-sm btn-default btn-flat border-primary" href="./index.php?page=new_room">
+		           		<i class="fa fa-plus"></i> Add New Room
         			</a>
     			</div>
     	<?php endif; ?>
