@@ -25,7 +25,6 @@
 								<option value="1" <?php echo isset($user_type_id) && $user_type_id == 1  ? 'selected readonly="true"' : '' ?>>Administrator</option>
 							</select>
 						</div>
-						
 
 						<?php else: ?>
 							<input type="hidden" name="type" value="3">
@@ -43,10 +42,11 @@
 					</div>
 					<div class="col-md-6">
 						
+                            
+
 						<div class="form-group">
 							<label class="control-label">Email</label>
-							<input type="email" class="form-control form-control-sm" name="user_email" readonly value="<?php echo isset($user_email) ? $user_email : '' ?>">
-						
+							<input type="email" class="form-control form-control-sm" name="user_email" required value="<?php echo isset($user_email) ? $user_email : '' ?>"  >
 							<small id="#msg"></small>
 						</div>
 						<div class="form-group">

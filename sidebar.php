@@ -31,7 +31,13 @@
                   <i class="nav-icon fas fa-print"></i>
                   <p>Curriculum Activities</p>
                 </a>
-          </li>
+            </li>
+            <li class="nav-item">
+                <a href="./index.php?page=scholarship" class="nav-link nav-   tree-item">
+                  <i class="nav-icon fas fa-print"></i>
+                  <p>Scholarship</p>
+                </a>
+            </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link nav-Letters nav-Letters ">
