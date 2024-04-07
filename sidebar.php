@@ -175,6 +175,14 @@
             </ul>
           </li>
         <?php endif; ?>
+        <?php if($_SESSION['login_user_type_id'] == 1 | $_SESSION['login_user_type_id'] == 2 |$_SESSION['login_user_type_id'] == 3 |$_SESSION['login_user_type_id'] == 4 ): ?>
+              <li class="nav-item">
+                <a href="./index.php?page=developer" class="nav-link nav-new_letter tree-item">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Developer Info</p>
+                </a>
+              </li>
+            <?php endif; ?>
         </ul>
       </nav>
     </div>
