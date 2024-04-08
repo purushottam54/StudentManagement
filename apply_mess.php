@@ -58,7 +58,7 @@
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu" style="">
-		                      <a class="dropdown-item view_project" href="./index.php?page=view_letter&id=<?php echo $row['mess_id'] ?>" data-id="<?php echo $row['mess_id'] ?>">View</a>
+		                      <a class="dropdown-item view_project" id="list" href="javascript:void(0)" data-id="<?php echo $row['mess_id'] ?>">Apply</a>
 		                    </div>
 						</td>
 					</tr>	
@@ -77,26 +77,48 @@
 	}
 </style>
 <script>
+
+<?php
+	$qry1 = $conn->query("SELECT student_id FROM students WHERE stud_user_id = '".$_SESSION['login_user_id']."'");
+	$row5 = $qry1->fetch_assoc();
+?>
 	$(document).ready(function(){
 		$('#list').dataTable()
 	
-	$('.delete_project').click(function(){
-	_conf("Are you sure to delete this letter?","delete_project",[$(this).attr('data-id')])
+	$('.view_project').click(function(){
+	_conf("Are you sure to apply this Mess?","delete_project",[$(this).attr('data-id'), <?php echo $row5['student_id']?>])
 	})
 	})
-	function delete_project($id){
-		start_load()
+
+	
+	function delete_project($mess_id, $student_id){
+		
+		start_load();
+		
+		
 		$.ajax({
-			url:'ajax.php?action=delete_project',
+			url:'ajax.php?action=apply_mess',
 			method:'POST',
-			data:{id:$id},
+			data:{mess_id:$mess_id, student_id:$student_id},
 			success:function(resp){
+				console.log(resp);
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Student Alerady In Mess (ANY)",'danger')
 					setTimeout(function(){
 						location.reload()
 					},1500)
-
+				}
+				if(resp==0){
+					alert_toast("Student Successfully Applied For Mess",'success')
+					setTimeout(function(){
+						location.reload()
+					},1500)
+				}
+				if(resp==2){
+					alert_toast("DB Error",'danger')
+					setTimeout(function(){
+						location.reload()
+					},1500)
 				}
 			}
 		})

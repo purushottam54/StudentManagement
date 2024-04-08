@@ -95,11 +95,11 @@ Class Action {
 			return 2;
 			exit;
 		}
-		if(isset($_FILES['user_profile_pic']) && $_FILES['user_profile_pic']['tmp_name'] != ''){
-			$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['user_profile_pic']['name'];
-			$move = move_uploaded_file($_FILES['user_profile_pic']['tmp_name'],'assets/images/'. $fname);
-			$data .= ", user_profile_pic = '$fname' ";
-		}
+		// if(isset($_FILES['user_profile_pic']) && $_FILES['user_profile_pic']['tmp_name'] != ''){
+		// 	$fname = strtotime(date('y-m-d H:i')).'_'.$_FILES['user_profile_pic']['name'];
+		// 	$move = move_uploaded_file($_FILES['user_profile_pic']['tmp_name'],'assets/images/'. $fname);
+		// 	$data .= ", user_profile_pic = '$fname' ";
+		// }
 		if(empty($id)){
 			$save = $this->db->query("INSERT INTO users SET $data");
 			$qry =  $this->db->query("SELECT user_id FROM users WHERE user_email = '$eemail'");
@@ -114,8 +114,8 @@ Class Action {
 			}
 		} else {
 			$save = $this->db->query("UPDATE users SET $data WHERE user_id = $id");
-			$qry = $this->db->query("SELECT * FROM students WHERE user_id = '$id'");
-			$qry2 = $this->db->query("SELECT * FROM gpd_hod WHERE user_id = '$id'");
+			$qry = $this->db->query("SELECT * FROM students WHERE user_id = $id");
+			// $qry2 = $this->db->query("SELECT * FROM gpd_hod WHERE user_id = $id");
 			if (!($qry->num_rows > 0)) {
 				if ($user_type == "2" ) {
 					$save = $this->db->query("INSERT INTO gpd_teacher (teacher_id, user_id, department_id) VALUES (NULL, '$user_id', '$department')");
@@ -142,6 +142,53 @@ Class Action {
 		}
 	}
 	
+
+
+
+	function apply_mess()
+	{
+		extract($_POST);
+		$qry1 = $this->db->query("SELECT is_mess FROM students WHERE student_id = $student_id");
+		$row = $qry1->fetch_assoc();
+		if($row['is_mess'] == 1){
+			return 1;
+			exit;
+		}
+		$save = $this->db->query("UPDATE students SET is_mess = '1', stud_mess_id = $mess_id WHERE student_id = $student_id");
+		if ($save) {
+			return 0;
+		}
+		else {
+			return 2;
+		}
+
+	}
+	function apply_room()
+	{
+		extract($_POST);
+		$qry1 = $this->db->query("SELECT is_room FROM students WHERE student_id = $student_id");
+		$row = $qry1->fetch_assoc();
+		if($row['is_room'] == 1){
+			return 1;
+			exit;
+		}
+		$qry2 = $this->db->query("SELECT room_max, room_current FROM room WHERE room_id = $room_id");
+		$row2 = $qry2->fetch_assoc();
+
+		if ($row2['room_max'] == $row2['room_current'] ) {
+			return 3;
+			exit;
+		}
+		$save = $this->db->query("UPDATE students SET is_room = '1', stud_room_id = $room_id WHERE student_id = $student_id");
+		$save = $this->db->query("UPDATE room SET room_current = room_current + 1 WHERE room_id = $room_id");
+		if ($save) {
+			return 0;
+		}
+		else {
+			return 2;
+		}
+
+	}
 	function signup(){
 		extract($_POST);
 		$data = "";
@@ -237,7 +284,7 @@ Class Action {
 	}
 	function delete_user(){
 		extract($_POST);
-		$delete = $this->db->query("DELETE FROM gpd_users where user_id = '$id'");
+		$delete = $this->db->query("DELETE FROM users where user_id = '$id'");
 		if($delete)
 			return 1;
 	}

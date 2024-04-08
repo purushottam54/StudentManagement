@@ -128,12 +128,7 @@
                   <p>Update Mess</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index.php?page=list_customers" class="nav-link nav-letter_list tree-item">
-                  <i class="fas fa-angle-right nav-icon"></i>
-                  <p>List Customers</p>
-                </a>
-              </li>
+              
             <?php endif; ?>
             <?php if($_SESSION['login_user_type_id'] == 2 ): ?>
               <li class="nav-item">

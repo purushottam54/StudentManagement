@@ -34,10 +34,7 @@
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu" style="">
-		                      <a class="dropdown-item view_user" href="javascript:void(0)" data-id="<?php echo $row['user_id'] ?>">View</a>
-		                      <div class="dropdown-divider"></div>
-		                      <a class="dropdown-item" href="./index.php?page=edit_user&id=<?php echo $row['user_id'] ?>">Edit</a>
-		                      <div class="dropdown-divider"></div>
+		                      
 		                      <a class="dropdown-item delete_user" href="javascript:void(0)" data-id="<?php echo $row['user_id'] ?>">Delete</a>
 		                    </div>
 						</td>
