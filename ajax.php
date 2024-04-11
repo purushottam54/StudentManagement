@@ -30,6 +30,16 @@ if($action == 'print_letter'){
 	if($logout)
 		echo $logout;
 }
+if($action == 'apply_mess'){
+	$logout = $crud->apply_mess();
+	if($logout)
+		echo $logout;
+}
+if($action == 'apply_room'){
+	$logout = $crud->apply_room();
+	if($logout)
+		echo $logout;
+}
 
 if($action == 'signup'){
 	$save = $crud->signup();

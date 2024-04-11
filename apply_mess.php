@@ -1,16 +1,4 @@
-<div class="form-group">
-    Listing all Mess that has been added by Mess Owners<br>
-    <label for="" class="control-label">Category</label>
-    <select class="form-control form-control-sm select2" name="material_category" id="category_select" required>
-        <option></option>
-        <?php
-        $unique_categories = $conn->query("SELECT DISTINCT material_category FROM material ORDER BY material_category ASC");
-        while ($row = $unique_categories->fetch_assoc()):
-            ?>
-            <option><?php echo ucwords($row['material_category']) ?></option>
-        <?php endwhile; ?>
-    </select>
-</div>
+
 <?php include'db_connect.php' ?>
 <div class="col-lg-12">
 	<div class="card card-outline card-success">
@@ -48,52 +36,29 @@
 				</thead>
 				<tbody>
 				<?php
+				$mess_type = ["Veg", "Non-Veg"];
                 $i = 1;
-                $stat = array("Teacher","Hod","Lipik","Principal", "Done");
-                $where = "";
-                if($_SESSION['login_user_type_id'] == 2){
-                  $where = " WHERE letter_creator_user_id = '{$_SESSION['login_user_id']}'";
-                }
-                elseif($_SESSION['login_user_type_id'] == 3){
-                  $where = " WHERE letter_creator_user_id = '{$_SESSION['login_user_id']}' OR letter_creator_user_id IN ( SELECT user_id FROM gpd_teacher WHERE department_id = ( SELECT department_id FROM gpd_hod WHERE user_id = '{$_SESSION['login_user_id']}' ))";
-                }
-                elseif($_SESSION['login_user_type_id'] == 4){
-                  $where = " WHERE letter_status = '3'";
-                }
-                elseif($_SESSION['login_user_type_id'] == 5){
-                  $where = " WHERE letter_status = '4'";
-                }
-                $qry = $conn->query("SELECT * FROM gpd_letters $where order by letter_creator_user_id asc");
+                $qry = $conn->query("SELECT * FROM mess order by mess_type asc");
                 while($row = $qry->fetch_assoc()):
-                  $status = $row['letter_status'];
-                  $prog = ($status == 4) ? 100 : ($status * 20); // Assuming Done is 100%
-                
                 ?>
 					<tr>
 						<th class="text-center"><?php echo $i++ ?></th>
 						<td>
-							<p><b><?php echo ucwords($row['letter_title']) ?></b></p>
+						<?php
+							$qry1 = $conn->query("SELECT concat(user_name,' ',user_surname) as name FROM users WHERE user_id = ".$row['mess_user_id']);
+							$row4 = $qry1->fetch_assoc()
+						?>
+							<p><b><?php echo ucwords($row4['name']) ?></b></p>
 							<p class="truncate"></p>
 						</td>
-						<td><b><?php echo date("M d, Y",strtotime($row['letter_created_date'])) ?></b></td>
-						<td><b><?php echo date("M d, Y",strtotime($row['letter_created_date'])) ?></b></td>
-						<td class="text-center">
-							<?php
-							  	echo "<span class='badge badge-success'>{$stat[$row['letter_status'] - 1]}</span>";
-							?>
-						</td>
+						<td><b><?php echo $row['mess_price'] ?> Rs</b></td>
+						<td><b><?php echo $mess_type[$row['mess_type']] ?></b></td>
 						<td class="text-center">
 							<button type="button" class="btn btn-default btn-sm btn-flat border-info wave-effect text-info dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
 		                      Action
 		                    </button>
 		                    <div class="dropdown-menu" style="">
-		                      <a class="dropdown-item view_project" href="./index.php?page=view_letter&id=<?php echo $row['letter_id'] ?>" data-id="<?php echo $row['letter_id'] ?>">View</a>
-		                      <?php if($_SESSION['login_user_type_id'] != 4 | $_SESSION['login_user_type_id'] != 5 ): ?>
-								<div class="dropdown-divider"></div>
-		                      <a class="dropdown-item" href="./index.php?page=edit_letter&id=<?php echo $row['letter_id'] ?>">Edit</a>
-		                      <div class="dropdown-divider"></div>
-		                      <a class="dropdown-item delete_project" href="javascript:void(0)" data-id="<?php echo $row['letter_id'] ?>">Delete</a>
-		                  <?php endif; ?>
+		                      <a class="dropdown-item view_project" id="list" href="javascript:void(0)" data-id="<?php echo $row['mess_id'] ?>">Apply</a>
 		                    </div>
 						</td>
 					</tr>	
@@ -112,26 +77,48 @@
 	}
 </style>
 <script>
+
+<?php
+	$qry1 = $conn->query("SELECT student_id FROM students WHERE stud_user_id = '".$_SESSION['login_user_id']."'");
+	$row5 = $qry1->fetch_assoc();
+?>
 	$(document).ready(function(){
 		$('#list').dataTable()
 	
-	$('.delete_project').click(function(){
-	_conf("Are you sure to delete this letter?","delete_project",[$(this).attr('data-id')])
+	$('.view_project').click(function(){
+	_conf("Are you sure to apply this Mess?","delete_project",[$(this).attr('data-id'), <?php echo $row5['student_id']?>])
 	})
 	})
-	function delete_project($id){
-		start_load()
+
+	
+	function delete_project($mess_id, $student_id){
+		
+		start_load();
+		
+		
 		$.ajax({
-			url:'ajax.php?action=delete_project',
+			url:'ajax.php?action=apply_mess',
 			method:'POST',
-			data:{id:$id},
+			data:{mess_id:$mess_id, student_id:$student_id},
 			success:function(resp){
+				console.log(resp);
 				if(resp==1){
-					alert_toast("Data successfully deleted",'success')
+					alert_toast("Student Alerady In Mess (ANY)",'danger')
 					setTimeout(function(){
 						location.reload()
 					},1500)
-
+				}
+				if(resp==0){
+					alert_toast("Student Successfully Applied For Mess",'success')
+					setTimeout(function(){
+						location.reload()
+					},1500)
+				}
+				if(resp==2){
+					alert_toast("DB Error",'danger')
+					setTimeout(function(){
+						location.reload()
+					},1500)
 				}
 			}
 		})

@@ -31,7 +31,13 @@
                   <i class="nav-icon fas fa-print"></i>
                   <p>Curriculum Activities</p>
                 </a>
-          </li>
+            </li>
+            <li class="nav-item">
+                <a href="./index.php?page=scholarship" class="nav-link nav-   tree-item">
+                  <i class="nav-icon fas fa-print"></i>
+                  <p>Scholarship</p>
+                </a>
+            </li>
 
           <li class="nav-item">
             <a href="#" class="nav-link nav-Letters nav-Letters ">
@@ -122,12 +128,7 @@
                   <p>Update Mess</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index.php?page=list_customers" class="nav-link nav-letter_list tree-item">
-                  <i class="fas fa-angle-right nav-icon"></i>
-                  <p>List Customers</p>
-                </a>
-              </li>
+              
             <?php endif; ?>
             <?php if($_SESSION['login_user_type_id'] == 2 ): ?>
               <li class="nav-item">
@@ -169,6 +170,14 @@
             </ul>
           </li>
         <?php endif; ?>
+        <?php if($_SESSION['login_user_type_id'] == 1 | $_SESSION['login_user_type_id'] == 2 |$_SESSION['login_user_type_id'] == 3 |$_SESSION['login_user_type_id'] == 4 ): ?>
+              <li class="nav-item">
+                <a href="./index.php?page=developer" class="nav-link nav-new_letter tree-item">
+                  <i class="nav-icon fas fa-users"></i>
+                  <p>Developer Info</p>
+                </a>
+              </li>
+            <?php endif; ?>
         </ul>
       </nav>
     </div>

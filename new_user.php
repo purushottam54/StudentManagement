@@ -25,26 +25,19 @@
 								<option value="1" <?php echo isset($user_type_id) && $user_type_id == 1  ? 'selected readonly="true"' : '' ?>>Administrator</option>
 							</select>
 						</div>
+						
 
 						<?php else: ?>
 							<input type="hidden" name="type" value="3">
 						<?php endif; ?>
-						<div class="form-group">
-							<label for="" class="control-label">Profile Picture</label>
-							<div class="custom-file">
-		                      <input type="file"  accept="image/jpeg, image/png"  class="custom-file-input" id="customFile" name="user_profile_pic" onchange="displayImg(this,$(this))">
-		                      <label class="custom-file-label" for="customFile">Choose file</label>
-		                    </div>
-						</div>
-						<div class="form-group d-flex justify-content-center align-items-center">
-							<img src="<?php echo isset($user_profile_pic) ? 'assets/uploads/'.$user_profile_pic :'./assets/uploads/no-image-available.png' ?>" alt="Avatar" id="cimg" class="img-fluid img-thumbnail ">
-						</div>
+						
 					</div>
 					<div class="col-md-6">
 						
 						<div class="form-group">
 							<label class="control-label">Email</label>
-							<input type="email" class="form-control form-control-sm" name="user_email" required value="<?php echo isset($user_email) ? $user_email : '' ?>">
+							<input type="email" class="form-control form-control-sm" name="user_email"  value="<?php echo isset($user_email) ? $user_email : '' ?>">
+						
 							<small id="#msg"></small>
 						</div>
 						<div class="form-group">
